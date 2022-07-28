@@ -17,7 +17,10 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 
+from maps.views import showroute, showmap
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('maps.urls')),
+    path("<str:lat1>,<str:long1>,<str:lat2>,<str:long2>", showroute, name="showroute"),
+    path("", showmap, name="showmap"),
+    path("admin/", admin.site.urls),
 ]
